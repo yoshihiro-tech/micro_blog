@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% for blog in object_list %}
+        <div>
+        {{ blog.content }}<br>
+        {{ blog.posted_date }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
