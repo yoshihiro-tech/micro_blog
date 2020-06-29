@@ -1,9 +1,13 @@
-
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView
+from django.views.generic import DetailView
+from django.views.generic import CreateView
+from django.views.generic import UpdateView
 
 from .models import Blog
+from .forms import BlogForm
+
 
 class BlogListView(ListView):
     model = Blog
@@ -13,12 +17,12 @@ class BlogDetailView(DetailView):
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ["content"]
+    form_class = BlogForm
     success_url = reverse_lazy("index")
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ["content"]
+    form_class = BlogForm
 
     def get_success_url(self):
         blog_pk = self.kwargs['pk']
